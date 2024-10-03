@@ -27,11 +27,11 @@ jobs:
         run: sudo apt-get install google-chrome-stable
       - name: install dependencies
         run: pip install -r requirements.txt
-      - name: first_test
+      - name: s6
         if: "github.event.inputs.deployment_target == 's6'"
         run: pytest tests/test_s6.py::test_s6 --alluredir=allure-results
         continue-on-error: true
-      - name: second_test
+      - name: monitors
         if: "github.event.inputs.deployment_target == 'monitors'"
         run: pytest tests/test_monitors.py::test_monitors --alluredir=allure-results
         continue-on-error: true
