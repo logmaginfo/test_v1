@@ -29,13 +29,13 @@ jobs:
         run: pip install -r requirements.txt
       - name: s6
         if: "github.event.inputs.deployment_target == 's6'"
-        run: pytest tests/test_s6.py::test_s6 --alluredir=allure-results
+        run: pytest tests/test_s6.py::test_s6
         continue-on-error: true
       - name: monitors
         if: "github.event.inputs.deployment_target == 'monitors'"
-        run: pytest tests/test_monitors.py::test_monitors --alluredir=allure-results
+        run: pytest tests/test_monitors.py::test_monitors
         continue-on-error: true
       - name: all
         if: "github.event.inputs.deployment_target == 'all'"
-        run: pytest --alluredir=allure-results
+        run: pytest
         continue-on-error: true
